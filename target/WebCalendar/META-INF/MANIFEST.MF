@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: Cameron
+Build-Jdk: 12.0.1
+Implementation-Title: WebCalendar Maven Webapp
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: WorkCalendar
+Main-Class: ${start-class}
+

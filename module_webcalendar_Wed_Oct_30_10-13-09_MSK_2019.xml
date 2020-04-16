@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_webcalendar" default="compile.module.webcalendar">
+  <dirname property="module.webcalendar.basedir" file="${ant.file.module_webcalendar}"/>
+  
+  <property name="module.jdk.home.webcalendar" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.webcalendar" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.webcalendar" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.webcalendar" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="webcalendar.output.dir" value="${module.webcalendar.basedir}/target/classes"/>
+  <property name="webcalendar.testoutput.dir" value="${module.webcalendar.basedir}/target/test-classes"/>
+  
+  <path id="webcalendar.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="webcalendar.module.production.classpath">
+    <path refid="${module.jdk.classpath.webcalendar}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.6.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.26.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-json:2.1.6.release.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.9.classpath"/>
+    <path refid="library.maven:_org.hibernate.validator:hibernate-validator:6.0.17.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:2.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.2.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.4.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:2.1.6.release.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:9.0.21.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:9.0.21.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:9.0.21.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.26.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.8.release.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:kinesis:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-cbor-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-json-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:protocol-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:sdk-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:profiles:2.9.26.classpath"/>
+    <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.2.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:auth:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.eventstream:eventstream:1.0.1.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:http-client-spi:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:regions:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:annotations:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:utils:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:dynamodb:2.9.26.classpath"/>
+  </path>
+  
+  <path id="webcalendar.runtime.production.module.classpath">
+    <pathelement location="${webcalendar.output.dir}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.6.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.26.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.23.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-json:2.1.6.release.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.9.classpath"/>
+    <path refid="library.maven:_org.hibernate.validator:hibernate-validator:6.0.17.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:2.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.2.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.4.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.1.8.release.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.26.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.8.release.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:kinesis:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-cbor-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-json-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:protocol-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:sdk-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:profiles:2.9.26.classpath"/>
+    <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.2.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:auth:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.eventstream:eventstream:1.0.1.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:http-client-spi:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:regions:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:annotations:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:utils:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:apache-client:2.9.26.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.9.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.11.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:netty-nio-client:2.9.26.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec-http:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec-http2:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-resolver:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-common:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-buffer:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-handler:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport-native-epoll:linux-x86_64:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport-native-unix-common:4.1.36.final.classpath"/>
+    <path refid="library.maven:_com.typesafe.netty:netty-reactive-streams-http:2.0.3.classpath"/>
+    <path refid="library.maven:_com.typesafe.netty:netty-reactive-streams:2.0.3.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:dynamodb:2.9.26.classpath"/>
+  </path>
+  
+  <path id="webcalendar.module.classpath">
+    <path refid="${module.jdk.classpath.webcalendar}"/>
+    <pathelement location="${webcalendar.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.6.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.26.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.23.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-json:2.1.6.release.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.9.classpath"/>
+    <path refid="library.maven:_org.hibernate.validator:hibernate-validator:6.0.17.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:2.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.2.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.4.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-test:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test-autoconfigure:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.assertj:assertj-core:3.11.1.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:2.23.4.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.13.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy-agent:1.9.13.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.6.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath"/>
+    <path refid="library.maven:_org.skyscreamer:jsonassert:1.5.0.classpath"/>
+    <path refid="library.maven:_com.vaadin.external.google:android-json:0.0.20131108.vaadin1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.xmlunit:xmlunit-core:2.6.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.3.1.classpath"/>
+    <path refid="library.maven:_javax.activation:javax.activation-api:1.2.0.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:2.1.6.release.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:9.0.21.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:9.0.21.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:9.0.21.classpath"/>
+    <path refid="library.maven:_com.jayway.jsonpath:json-path:2.4.0.classpath"/>
+    <path refid="library.maven:_net.minidev:json-smart:2.3.classpath"/>
+    <path refid="library.maven:_net.minidev:accessors-smart:1.2.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm:5.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.26.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.8.release.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:kinesis:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-cbor-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-json-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:protocol-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:sdk-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:profiles:2.9.26.classpath"/>
+    <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.2.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:auth:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.eventstream:eventstream:1.0.1.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:http-client-spi:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:regions:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:annotations:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:utils:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:apache-client:2.9.26.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.9.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.11.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:netty-nio-client:2.9.26.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec-http:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec-http2:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-resolver:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-common:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-buffer:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-handler:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport-native-epoll:linux-x86_64:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport-native-unix-common:4.1.36.final.classpath"/>
+    <path refid="library.maven:_com.typesafe.netty:netty-reactive-streams-http:2.0.3.classpath"/>
+    <path refid="library.maven:_com.typesafe.netty:netty-reactive-streams:2.0.3.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:dynamodb:2.9.26.classpath"/>
+  </path>
+  
+  <path id="webcalendar.runtime.module.classpath">
+    <pathelement location="${webcalendar.testoutput.dir}"/>
+    <pathelement location="${webcalendar.output.dir}"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-web:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.6.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.26.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.23.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-json:2.1.6.release.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.module:jackson-module-parameter-names:2.9.9.classpath"/>
+    <path refid="library.maven:_org.hibernate.validator:hibernate-validator:6.0.17.final.classpath"/>
+    <path refid="library.maven:_javax.validation:validation-api:2.0.1.final.classpath"/>
+    <path refid="library.maven:_org.jboss.logging:jboss-logging:3.3.2.final.classpath"/>
+    <path refid="library.maven:_com.fasterxml:classmate:1.4.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-test:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test-autoconfigure:2.1.6.release.classpath"/>
+    <path refid="library.maven:_org.assertj:assertj-core:3.11.1.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:2.23.4.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.13.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy-agent:1.9.13.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.6.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath"/>
+    <path refid="library.maven:_org.skyscreamer:jsonassert:1.5.0.classpath"/>
+    <path refid="library.maven:_com.vaadin.external.google:android-json:0.0.20131108.vaadin1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.xmlunit:xmlunit-core:2.6.2.classpath"/>
+    <path refid="library.maven:_javax.xml.bind:jaxb-api:2.3.1.classpath"/>
+    <path refid="library.maven:_javax.activation:javax.activation-api:1.2.0.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-tomcat:2.1.6.release.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-core:9.0.21.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-el:9.0.21.classpath"/>
+    <path refid="library.maven:_org.apache.tomcat.embed:tomcat-embed-websocket:9.0.21.classpath"/>
+    <path refid="library.maven:_com.jayway.jsonpath:json-path:2.4.0.classpath"/>
+    <path refid="library.maven:_net.minidev:json-smart:2.3.classpath"/>
+    <path refid="library.maven:_net.minidev:accessors-smart:1.2.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm:5.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.26.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.2.0.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.8.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.8.release.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:kinesis:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-cbor-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.9.9.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-json-protocol:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:protocol-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:sdk-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:profiles:2.9.26.classpath"/>
+    <path refid="library.maven:_org.reactivestreams:reactive-streams:1.0.2.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:auth:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.eventstream:eventstream:1.0.1.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:http-client-spi:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:regions:2.9.26.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:annotations:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:utils:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:aws-core:2.9.26.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:apache-client:2.9.26.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.9.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.11.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:netty-nio-client:2.9.26.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec-http:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec-http2:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-codec:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-resolver:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-common:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-buffer:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-handler:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport-native-epoll:linux-x86_64:4.1.36.final.classpath"/>
+    <path refid="library.maven:_io.netty:netty-transport-native-unix-common:4.1.36.final.classpath"/>
+    <path refid="library.maven:_com.typesafe.netty:netty-reactive-streams-http:2.0.3.classpath"/>
+    <path refid="library.maven:_com.typesafe.netty:netty-reactive-streams:2.0.3.classpath"/>
+    <path refid="library.maven:_software.amazon.awssdk:dynamodb:2.9.26.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.webcalendar">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.webcalendar">
+    <patternset refid="excluded.from.module.webcalendar"/>
+  </patternset>
+  
+  <path id="webcalendar.module.sourcepath">
+    <dirset dir="${module.webcalendar.basedir}">
+      <include name="src/main/res"/>
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.webcalendar" depends="compile.module.webcalendar.production,compile.module.webcalendar.tests" description="Compile module WebCalendar"/>
+  
+  <target name="compile.module.webcalendar.production" depends="register.custom.compilers" description="Compile module WebCalendar; production classes">
+    <mkdir dir="${webcalendar.output.dir}"/>
+    <javac2 destdir="${webcalendar.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.webcalendar}/javac">
+      <compilerarg line="${compiler.args.webcalendar}"/>
+      <bootclasspath refid="webcalendar.module.bootclasspath"/>
+      <classpath refid="webcalendar.module.production.classpath"/>
+      <src refid="webcalendar.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.webcalendar"/>
+    </javac2>
+    
+    <copy todir="${webcalendar.output.dir}">
+      <fileset dir="/">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.webcalendar.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.webcalendar.tests" depends="register.custom.compilers,compile.module.webcalendar.production" description="compile module WebCalendar; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.webcalendar" description="cleanup module">
+    <delete dir="${webcalendar.output.dir}"/>
+    <delete dir="${webcalendar.testoutput.dir}"/>
+  </target>
+</project>

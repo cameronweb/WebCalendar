@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Сотрудникаи</title>
+</head>
+<body>
+<table border="1">
+    <tr th:each="user: ${users}">
+        <td th:utext="${user.name}"></td>
+        <td th:utext="${user.phone}"></td>
+        <td th:utext="${user.serverID}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
